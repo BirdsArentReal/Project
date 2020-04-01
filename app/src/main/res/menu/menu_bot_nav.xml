@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/listPage"
-        android:icon=""
+        android:icon="@drawable/ic_view_list_black_24dp"
         android:title="Lists" />
 
     <item
         android:id="@+id/homePage"
-        android:icon=""
+        android:icon="@drawable/ic_home_black_24dp"
         android:title="Home" />
 
     <item
-        android:id="@+id/chatGroupPage"
-        android:icon=""
-        android:title="Chat Group" />
+        android:id="@+id/chatPage"
+        android:icon="@drawable/ic_chat_black_24dp"
+        android:title="Chat" />
 
 </menu>
