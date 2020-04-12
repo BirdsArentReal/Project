@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"
+        android:id="@+id/emergencyButton"
+        android:padding="16dp"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
         android:layout_height="wrap_content"
-        android:text="Tab Emergency"
+        android:text="Announce \n emergency"
         android:textSize="50sp" />
 
-</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:inputType="none"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:id="@+id/resolveButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="resolve"
+        android:layout_margin="16dp"
+        android:textSize="30sp"/>
+
+</RelativeLayout>
