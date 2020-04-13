@@ -72,24 +72,27 @@ public class SignUpActivity extends AppCompatActivity {
             }
         }
 
+        //creating a new account object for the account in firebase
         String id = db.push().getKey();
         Account acc = new Account(username, password, false, id);
         db.child(id).setValue(acc);
 
+        //creating a new reminders object for the account in firebase
         DatabaseReference reminderRef = Database.fd.getReference("Reminders");
         String reminderID = reminderRef.push().getKey();
         FirebaseStringArraylist temp = new FirebaseStringArraylist(new SavableString(), id, reminderID);
         reminderRef.child(reminderID).setValue(temp);
 
+        //creating a new chat object for the account in firebase
         DatabaseReference chatRef = Database.fd.getReference("Chat");
         String chatID = reminderRef.push().getKey();
-        FirebaseStringArraylist temp2 = new FirebaseStringArraylist(new SavableString(), id, reminderID);
+        FirebaseStringArraylist temp2 = new FirebaseStringArraylist(new SavableString(), id, chatID);
         chatRef.child(chatID).setValue(temp2);
 
-        Database.sr = FirebaseStorage.getInstance().getReference(acc.getUsername());
-
+        //initialising app
         Database.account = acc;
 
+        //SharedPreferences so logging in twice is not needed
         sharedPref = getApplication().getSharedPreferences("Login", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("logged_in", 1);

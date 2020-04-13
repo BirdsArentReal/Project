@@ -90,6 +90,9 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
 
     }
 
+    /****
+     *App Bar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mi = getMenuInflater();
@@ -110,6 +113,9 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
         return super.onOptionsItemSelected(item);
     }
 
+    /***
+     * For storage, reminder and chat paths
+     */
     private void initialiseReferences(){
         reminderRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,6 +163,10 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
     }
 
 
+    /****
+     *
+     * Notifications for chat
+     */
     @Override
     public void newMessage(String body) {
         final NotificationCompat.Builder builderChat = new NotificationCompat.Builder(this, "Chat")
