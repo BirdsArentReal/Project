@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/reminderCard_master"
+    android:id="@+id/chatCard_master"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="4dp"
@@ -10,13 +10,13 @@
     app:cardCornerRadius="10dp">
 
     <LinearLayout
-        android:id="@+id/ll_reminder"
+        android:id="@+id/ll_chat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/reminderText"
+            android:id="@+id/chatText"
             android:layout_width="0dp"
             android:padding="16dp"
             android:layout_height="wrap_content"
@@ -24,14 +24,14 @@
             android:textSize="50dp" />
 
         <TextView
-            android:id="@+id/reminderPosition"
+            android:id="@+id/chatPosition"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:visibility="gone" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:id="@+id/reminderDeleteButton"
+            android:id="@+id/chatDeleteButton"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_delete_black_24dp"
             android:layout_margin="16dp"/>

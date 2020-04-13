@@ -76,6 +76,16 @@ public class SignUpActivity extends AppCompatActivity {
         Account acc = new Account(username, password, false, id);
         db.child(id).setValue(acc);
 
+        DatabaseReference reminderRef = Database.fd.getReference("Reminders");
+        String reminderID = reminderRef.push().getKey();
+        FirebaseStringArraylist temp = new FirebaseStringArraylist(new SavableString(), id, reminderID);
+        reminderRef.child(reminderID).setValue(temp);
+
+        DatabaseReference chatRef = Database.fd.getReference("Chat");
+        String chatID = reminderRef.push().getKey();
+        FirebaseStringArraylist temp2 = new FirebaseStringArraylist(new SavableString(), id, reminderID);
+        chatRef.child(chatID).setValue(temp2);
+
         Database.sr = FirebaseStorage.getInstance().getReference(acc.getUsername());
 
         Database.account = acc;

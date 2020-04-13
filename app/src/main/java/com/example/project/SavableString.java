@@ -7,6 +7,7 @@ public class SavableString {
     static String bs = "123SWR55TFE097MK";
 
     SavableString() {
+        this("");
     }
 
     public SavableString(String str) {

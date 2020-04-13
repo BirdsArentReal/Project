@@ -17,7 +17,8 @@ public class Database {
     public static FirebaseDatabase fd;
     public static StorageReference sr;
 
-    public static ArrayList<String> reminderArrayList;
+    public static ArrayList<String> reminderArrayList = new ArrayList<>(), chatArrayList = new ArrayList<>();
+    public static boolean reminderRemoved = false, chatRemoved = false;
 
     Database(){
         fd = FirebaseDatabase.getInstance();

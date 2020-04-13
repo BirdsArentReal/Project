@@ -3,6 +3,7 @@ package com.example.project;
 public class FirebaseStringArraylist {
     SavableString savableString;
     String id;
+    String firebaseID;
 
     public String getFirebaseID() {
         return firebaseID;
@@ -12,7 +13,6 @@ public class FirebaseStringArraylist {
         this.firebaseID = firebaseID;
     }
 
-    String firebaseID;
 
     public SavableString getSavableString() {
         return savableString;
@@ -30,10 +30,12 @@ public class FirebaseStringArraylist {
         this.id = id;
     }
 
-    FirebaseStringArraylist(){}
+    FirebaseStringArraylist(){
+    }
 
-    public FirebaseStringArraylist(SavableString savableString, String id) {
+    public FirebaseStringArraylist(SavableString savableString, String id, String firebaseID) {
         this.savableString = savableString;
         this.id = id;
+        this.firebaseID = firebaseID;
     }
 }

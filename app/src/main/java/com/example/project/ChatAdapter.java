@@ -1,5 +1,9 @@
 package com.example.project;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,38 +11,34 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
 
-public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyViewHolder> {
-
-    ArrayList<String> reminderArrayList;
+    ArrayList<String> chatArrayList;
     Context context;
 
-    public ReminderAdapter(ArrayList<String> reminderArrayList, Context context) {
-        this.reminderArrayList = reminderArrayList;
+    public ChatAdapter(ArrayList<String> chatArrayList, Context context) {
+        this.chatArrayList = chatArrayList;
         this.context = context;
     }
 
     @Override
     public int getItemCount() {
-        return reminderArrayList.size();
+        return chatArrayList.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         ImageView delete = holder.delete;
         TextView position_tv = holder.position_tv;
-        TextView reminder_tv = holder.reminder_tv;
+        TextView chat_tv = holder.chat_tv;
         //final CardView cardView = holder.cardView;
 
-        position_tv.setText(position+"");
-        reminder_tv.setText(reminderArrayList.get(position));
+        position_tv.setText(position + "");
+        chat_tv.setText(chatArrayList.get(position));
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,16 +47,16 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
         });
     }
 
-    public void hideitem(final int position){
-        Database.reminderArrayList.remove(position);
-        Database.reminderRemoved = true;
+    public void hideitem(final int position) {
+        Database.chatArrayList.remove(position);
+        Database.chatRemoved = true;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater li = LayoutInflater.from(parent.getContext());
-        View view = li.inflate(R.layout.entity_reminder, parent, false);
+        View view = li.inflate(R.layout.entity_chat, parent, false);
 
         MyViewHolder myViewHolder = new MyViewHolder(view);
 
@@ -65,18 +65,19 @@ public class ReminderAdapter extends RecyclerView.Adapter<ReminderAdapter.MyView
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView delete;
-        TextView position_tv, reminder_tv;
+        TextView position_tv, chat_tv;
         CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            delete = itemView.findViewById(R.id.reminderDeleteButton);
-            position_tv = itemView.findViewById(R.id.reminderPosition);
-            reminder_tv = itemView.findViewById(R.id.reminderText);
-            cardView = itemView.findViewById(R.id.reminderCard_master);
+            delete = itemView.findViewById(R.id.chatDeleteButton);
+            position_tv = itemView.findViewById(R.id.chatPosition);
+            chat_tv = itemView.findViewById(R.id.chatText);
+            cardView = itemView.findViewById(R.id.chatCard_master);
 
         }
 
 
     }
 }
+

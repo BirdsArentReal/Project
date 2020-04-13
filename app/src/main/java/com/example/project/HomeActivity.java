@@ -3,11 +3,16 @@ package com.example.project;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ChatDialog.newMessageListener{
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,6 +63,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //chat Notif
+        createNotificationChannel();
 
         //Action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
@@ -147,5 +155,34 @@ public class HomeActivity extends AppCompatActivity {
         chatRef.child(id).removeValue();
 
     }
+
+
+    @Override
+    public void newMessage(String body) {
+        final NotificationCompat.Builder builderChat = new NotificationCompat.Builder(this, "Chat")
+                .setSmallIcon(R.drawable.ic_check_black_24dp)
+                .setContentTitle("New Message")
+                .setContentText(body)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+
+        notificationManagerCompat.notify(5, builderChat.build());
+    }
+
+    private void createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            CharSequence name = "Chat";
+            String description = "For notifications on chat";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel("Chat", name, importance);
+            notificationChannel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+    }
+
 
 }

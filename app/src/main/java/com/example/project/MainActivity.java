@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         db = Database.fd.getReference("Account");
 
         sharedPref = getApplication().getSharedPreferences("Login", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        //SharedPreferences.Editor editor = sharedPref.edit();
 
 
         //editor.clear();
@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                 password_entered = passwordTxt.getText().toString();
 
         SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("logged_in", 0);
+        editor.commit();
 
         for (Account acc: Database.accLst){
             if (username_entered.equals(acc.getUsername()) && password_entered.equals(acc.getPassword())){

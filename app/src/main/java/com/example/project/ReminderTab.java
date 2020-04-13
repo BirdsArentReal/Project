@@ -60,13 +60,19 @@ public class ReminderTab extends Fragment {
         reminderArrayList = new ArrayList<>();
 
         for (FirebaseStringArraylist i: Database.reminderLst){
+            Log.d("prepare news", "we found one");
             if (i.getId().equals(Database.account.getId())){
+
+                Log.d("prepare news", "found something");
+                Database.reminderID = i.getFirebaseID();
                 reminderArrayList = SavableString.convertToArrayList(i.getSavableString());
-                if (Database.reminderArrayList.size() <= reminderArrayList.size()){
-                    reminderArrayList = Database.reminderArrayList;
+                Log.d("reminderArrayList", reminderArrayList+"");
+                Log.d("DatabaseReminderArrayList", Database.reminderArrayList+"");
+                if (Database.reminderArrayList.size() < reminderArrayList.size() && Database.reminderRemoved == false){
+                    Database.reminderArrayList = reminderArrayList;
                 }
                 else {
-                    Database.reminderArrayList = reminderArrayList;
+                    reminderArrayList = Database.reminderArrayList;
                     updateFirebase();
                 }
             }
@@ -74,14 +80,17 @@ public class ReminderTab extends Fragment {
 
         ReminderAdapter reminderAdapter = new ReminderAdapter(reminderArrayList, getActivity());
         recyclerView.setAdapter(reminderAdapter);
+        Log.d("prepareReminder", "no problems");
+        Log.d("Firebase id", Database.reminderID+"");
     }
 
     public void updateFirebase(){
+
         reminderArrayList = Database.reminderArrayList;
         DatabaseReference reminderRef = Database.fd.getReference("Reminders");
 
         reminderRef.child(Database.reminderID).setValue(new FirebaseStringArraylist(
-                SavableString.convertToSavableString(reminderArrayList),Database.account.getId()));
-
+                SavableString.convertToSavableString(reminderArrayList), Database.account.getId(), Database.reminderID));
+        Log.d("updateFirebase", "no problems");
     }
 }
