@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements ChatDialog.newMessageListener{
+public class HomeActivity extends AppCompatActivity implements ChatDialog.newMessageListener, ListDialog.newListItemListener{
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,8 +56,9 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
                 }
             };
 
-    public DatabaseReference reminderRef, chatRef;
+    public DatabaseReference reminderRef, chatRef, listRef;
     ArrayList<FirebaseStringArraylist> reminderLst, chatLst;
+    ArrayList<ListItem> listItemLst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,10 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
         //Chat
         chatRef = Database.fd.getReference("Chat");
         chatLst = new ArrayList<>();
+
+        //List
+        listRef = Database.fd.getReference("List");
+        listItemLst = new ArrayList<>();
 
         initialiseReferences();
 
@@ -114,7 +119,7 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
     }
 
     /***
-     * For storage, reminder and chat paths
+     * For reminder and chat paths
      */
     private void initialiseReferences(){
         reminderRef.addValueEventListener(new ValueEventListener() {
@@ -151,6 +156,24 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
             }
         });
 
+        listRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                listItemLst.clear();
+                for(DataSnapshot chatSnapshot: dataSnapshot.getChildren()){
+                    ListItem temp = chatSnapshot.getValue(ListItem.class);
+                    listItemLst.add(temp);
+                }
+                Database.listItemArrayList = listItemLst;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.d("error", databaseError.getMessage());
+            }
+        });
+
+
         //Artificially updating
         String id = reminderRef.push().getKey();
         reminderRef.child(id).setValue(new SavableString("oh god please help"));
@@ -160,6 +183,9 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
         chatRef.child(id).setValue(new SavableString("oh god please help"));
         chatRef.child(id).removeValue();
 
+        id = listRef.push().getKey();
+        listRef.child(id).setValue(new ListItem("","","", Database.account.getId(), id));
+        listRef.child(id).removeValue();
     }
 
 
@@ -195,4 +221,14 @@ public class HomeActivity extends AppCompatActivity implements ChatDialog.newMes
     }
 
 
+    /***
+     * adding list item to database automatically
+     */
+    @Override
+    public void newListItem(String name, String remaining, String image) {
+        String id = listRef.push().getKey();
+        ListItem item = new ListItem(image, name, remaining, Database.account.getId(), id);
+        Log.d("item passed", item+"");
+        listRef.child(id).setValue(item);
+    }
 }

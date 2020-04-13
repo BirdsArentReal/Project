@@ -15,10 +15,13 @@ public class Database {
     public static Account account;
 
     public static FirebaseDatabase fd;
-    public static StorageReference sr;
 
     public static ArrayList<String> reminderArrayList = new ArrayList<>(), chatArrayList = new ArrayList<>();
     public static boolean reminderRemoved = false, chatRemoved = false;
+
+    public static ArrayList<ListItem> listItemArrayList = new ArrayList<>();
+
+    public static String link = "health";
 
     Database(){
         fd = FirebaseDatabase.getInstance();

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="item_spinner">
+        <item>Meat</item>
+        <item>Fish</item>
+        <item>Egg</item>
+        <item>Fruits</item>
+        <item>Vegetables</item>
+    </string-array>
+</resources>

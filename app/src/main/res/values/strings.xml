@@ -1,3 +1,87 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">FamilyAssistant</string>
+
+    <!-->Health Links<-->
+    <string name="health">
+        Please note that you should consult a family member or (preferably) a doctor before taking information
+        from these websites as fact!
+        \n
+        \nhttps://www.healthline.com/
+        \n
+        \nhttps://www.webmd.com/
+        \n
+        \nkidshealth.org
+        \n
+        \nwww.drugs.com
+        \n
+        \nhttps://www.mayoclinic.org/
+        \n
+        \nHave XY kidnap your illness
+    </string>
+
+    <!-->Food Links<-->
+    <string name="food">
+        Please remember to check if you are allergic to these foods before trying them!
+        \n
+        \nhttps://www.youtube.com/channel/UC00wMIWR48SYidE6jmpL7Qg
+        \n
+        \nNYT Cooking.
+        \n
+        \nOola.com.
+        \n
+        \nEpicurious.
+        \n
+        \nMomofuku.
+        \n
+        \nYummly.
+        \n
+        \nYEAH! BURGER.
+        \n
+        \nHARVEST MOON GRILLE.
+        \n
+        \nFood Republic.
+        \n
+        \n
+    </string>
+
+    <!-->Other Links<-->
+    <string name="links">
+        Have fun!
+        \n
+        \nLong ago, the programmer and his family lived together in harmony. Then, everything changed
+        when the fire nation attac- I mean, when the application came into existence. Only the
+        programmer, the creator of this madness, could stop the world-ending disappointment that is
+        this application, but when the programmer needed his family most, they vanished.
+        \n
+        \nA hundred years had passed and the programmer found a clue to locate his family, a note that said that
+        his family disowned him. Although the programmer spent 69,420 years on detective work to
+        find his family, he could never find any of them. He never understood what the initials XY
+        on the envelope stood for.
+        \n
+        \nHow Unfortunate.
+        \n
+        \nDo not be like the programmer. Fear the initials.
+        \n
+        \n
+        \nUndertale, Undertale
+        \nDoes whatever skeletons do
+        \nSpook people, In closets
+        \nIntercourse, with your mom
+        \nLook out! He is Sans Undertale
+        \n
+        \nHow Unfortunate.
+        \n
+        \n
+        \nwww.royalroad.com
+        \n
+        \nwww.novelupdates.com
+        \n
+        \nwww.mangadex.com
+        \n
+        \nwww.reddit.com
+        \n
+        \nRAID SHADOW LEGENDS
+        \n
+        \n
+    </string>
 </resources>

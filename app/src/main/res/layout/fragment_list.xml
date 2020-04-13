@@ -10,6 +10,31 @@
         android:layout_height="48dp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        android:id="@+id/listRecyclerView"
+        android:layout_marginVertical="16dp"
+        app:layout_constraintBottom_toTopOf="@id/listButton"
+        app:layout_constraintTop_toBottomOf="@id/listPageSpace_appBar"/>
+
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:text="Add Item"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/listPageSpace_botNavView"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+
+
     <Space
         android:id="@+id/listPageSpace_botNavView"
         android:layout_width="match_parent"

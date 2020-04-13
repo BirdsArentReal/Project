@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(getApplicationContext(), "highly suspect", Toast.LENGTH_LONG);
                 toast.show();
 
-                Database.sr = FirebaseStorage.getInstance().getReference(acc.getUsername());
                 break;
             }
         }
